@@ -1,0 +1,77 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  color: #ddd;
+  font-family: system-ui;
+}
+
+#ui {
+  position: fixed;
+  z-index: 10;
+  inset: 16px auto auto 16px;
+  background: #111a;
+  border: 1px solid #222;
+  padding: 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  min-width: 200px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.controls > * {
+  flex: 1;
+  min-width: 80px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+#ui label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+#ui input[type="range"] {
+  flex: 1;
+}
+
+#readouts {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+button, select {
+  background: #222;
+  border: 1px solid #333;
+  color: #ddd;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input[type="file"] {
+  font-size: 0.9em;
+}
+
+canvas {
+  display: block;
+}

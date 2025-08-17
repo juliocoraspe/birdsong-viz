@@ -1,0 +1,19 @@
+{
+  "name": "birdsong-viz",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "meyda": "5.6.3",
+    "postprocessing": "6.37.7",
+    "three": "0.179.1"
+  }
+}

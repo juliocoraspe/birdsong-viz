@@ -1,0 +1,86 @@
+{
+  "project": {
+    "name": "Birdsong Visualizer",
+    "goal": "Audio-reactive generative art in the browser using mic or audio files.",
+    "stack": {
+      "bundler": "Vite (vanilla)",
+      "languages": ["HTML", "CSS", "JavaScript (ES Modules)"],
+      "libraries": ["three", "meyda", "postprocessing"],
+      "apis": [
+        "getUserMedia",
+        "Web Audio API (AudioContext, AnalyserNode)",
+        "Canvas/WebGL via Three.js"
+      ]
+    },
+    "run": {
+      "dev": "npm run dev",
+      "build": "npm run build",
+      "preview": "npm run preview",
+      "https_hint": "Use mkcert for local HTTPS if testing mic on mobile Safari."
+    }
+  },
+  "features": {
+    "inputs": ["microphone", "audio_file"],
+    "analysis": {
+      "fftSize": 2048,
+      "smoothingTimeConstant": 0.7,
+      "meyda": ["rms", "spectralCentroid", "spectralFlatness", "mfcc"]
+    },
+    "mapping": {
+      "x": "frequency (0..10kHz)",
+      "y": "amplitude (per-bin)",
+      "z": "time (history/trail)",
+      "color": "flatness or MFCC-derived palette",
+      "size": "rms",
+      "params": {
+        "history": 120,
+        "maxFreqHz": 10000,
+        "sensitivity": "0..2 multiplier"
+      }
+    },
+    "ui": {
+      "buttons": [
+        "Start mic",
+        "Stop mic",
+        "Preset: Nebula",
+        "Preset: WireBloom",
+        "Load file"
+      ],
+      "sliders": ["Sensitivity", "Trail depth", "Palette index"],
+      "labels": ["Centroid (Hz)", "Flatness (0..1)"]
+    },
+    "presets": [
+      {
+        "name": "Nebula",
+        "type": "point_cloud",
+        "shader": {
+          "vertex": "audio-modulated noise displacement",
+          "fragment": "additive blending, soft alpha, palette by flatness/mfcc"
+        }
+      },
+      {
+        "name": "WireBloom",
+        "type": "lines_knn",
+        "post": ["Bloom"],
+        "logic": "connect top-N spectral peaks per frame with KNN"
+      }
+    ],
+    "fallbacks": {
+      "no_mic": "show file input",
+      "no_https": "warn and suggest localhost or https",
+      "mobile": "reduce points/history automatically"
+    }
+  },
+  "acceptance": [
+    "Visualizer reacts in real time to mic and to uploaded audio.",
+    "Two visual presets switchable from UI.",
+    "Spectral centroid/flatness influence color/motion.",
+    "Runs without paid services or API keys.",
+    "Build works and preview matches dev behavior."
+  ],
+  "nice_to_have": [
+    "Screenshot PNG",
+    "10s WebM capture",
+    "Preset parameters saved in localStorage"
+  ]
+}
