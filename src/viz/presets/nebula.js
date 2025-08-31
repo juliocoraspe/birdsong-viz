@@ -1,5 +1,5 @@
 // src/viz/presets/nebula.js
-import * as THREE from "three";
+import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
 // --- knobs para tunear rápido ---
 const MULTIPLIER = 10; // 10× más puntos que los bins de audio
