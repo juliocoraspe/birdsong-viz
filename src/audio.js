@@ -1,5 +1,4 @@
 // src/audio.js
-// ESM directo desde CDN:
 import Meyda from "https://esm.sh/meyda@5.6.3";
 
 let audioCtx, sourceNode, analyser, freq, time;
