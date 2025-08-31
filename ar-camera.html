@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR con cámara</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+      }
+      #cam {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 0;
+      }
+      #c {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Video con la cámara del teléfono -->
+    <video id="cam" autoplay playsinline muted></video>
+
+    <!-- Canvas de Three.js -->
+    <canvas id="c"></canvas>
+
+    <!-- Script externo con la lógica -->
+    <script type="module" src="./ar-camera.js"></script>
+  </body>
+</html>
